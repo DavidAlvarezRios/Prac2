@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'forkilla/base.html' %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Review</title>
+    </head>
+    <body>
+
+        <h2> Starting review for restaurant {{restaurant.name}}</h2>
+        <form method="POST" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send</button>
+        </form>
+    </body>
+{% endblock %}
+</html>

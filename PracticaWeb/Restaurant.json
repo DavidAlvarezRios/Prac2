@@ -1,0 +1,207 @@
+[
+  {
+    "model": "forkilla.Restaurant",
+    "pk": 1,
+    "fields": {
+      "restaurant_number": "09186777",
+      "name": "Only Tapas",
+      "menu_description" :"TAPAS",
+      "price_average" : "30",
+      "is_promot" : "False",
+      "rate" : "10",
+      "category" : "Medi",
+      "city": "Barcelona",
+      "address": "Les Rambles, 33",
+      "country": "Spain",
+      "capacity": 40
+    }
+  },
+   {
+    "model": "forkilla.Restaurant",
+    "pk": 2,
+    "fields": {
+      "restaurant_number": "09186666",
+      "name": "Only Pinxos",
+      "menu_description" :"PINXOS",
+      "price_average" : "130.33",
+      "is_promot" : "True",
+      "rate" : "9.6",
+      "category" : "Basq",
+      "city": "Barcelona",
+      "address": "Gran Via de les Corts Catalanes, 495",
+      "country": "Spain",
+      "capacity": 240
+    }
+  },
+    {
+    "model": "forkilla.Restaurant",
+    "pk": 3,
+    "fields": {
+      "restaurant_number": "09136666",
+      "name": "LA PATATA",
+      "menu_description" :"Patatas",
+      "price_average" : "25.33",
+      "is_promot" : "True",
+      "rate" : "10.0",
+      "category" : "Medi",
+      "city": "Barcelona",
+      "address": "Carrer Pissa, 125",
+      "country": "Spain",
+      "capacity": 100
+    }
+  }, 
+    {
+    "model": "forkilla.Restaurant",
+    "pk": 4,
+    "fields": {
+      "restaurant_number": "09986666",
+      "name": "+ x -",
+      "menu_description" :"Tapas variadas",
+      "price_average" : "30.5",
+      "is_promot" : "False",
+      "rate" : "7.0",
+      "category" : "Medi",
+      "city": "Madrid",
+      "address": "Calle Solano, 2",
+      "country": "Spain",
+      "capacity": 400
+    }
+  },
+   {
+    "model": "forkilla.Restaurant",
+    "pk": 5,
+    "fields": {
+      "restaurant_number": "19986666",
+      "name": "CC",
+      "menu_description" :"Degustación",
+      "price_average" : "340.5",
+      "is_promot" : "True",
+      "rate" : "10.0",
+      "category" : "Basq",
+      "city": "San Sebastian",
+      "address": "Calle de Arribitxi, 2",
+      "country": "Spain",
+      "capacity": 50
+    }
+  },
+   {
+    "model": "forkilla.Restaurant",
+    "pk": 6,
+    "fields": {
+      "restaurant_number": "19986446",
+      "name": "Plats",
+      "menu_description" :"Degustación",
+      "price_average" : "70.5",
+      "is_promot" : "False",
+      "rate" : "9.0",
+      "category" : "Medi",
+      "city": "Valencia",
+      "address": "Carrer Llibertat, 23",
+      "country": "Spain",
+      "capacity": 75
+    }
+  },
+   {
+    "model": "forkilla.Restaurant",
+    "pk": 7,
+    "fields": {
+      "restaurant_number": "19977446",
+      "name": "Wok and Bao",
+      "menu_description" :"Japones",
+      "price_average" : "7.5",
+      "is_promot" : "True",
+      "rate" : "6.0",
+      "category" : "Japa",
+      "city": "Barcelona",
+      "address": "Avenida Pelai, 73",
+      "country": "Spain",
+      "capacity": 15
+    }
+  },
+   {
+    "model": "forkilla.Restaurant",
+    "pk": 8,
+    "fields": {
+      "restaurant_number": "15677446",
+      "name": "Shushi World",
+      "menu_description" :"Japones",
+      "price_average" : "18.5",
+      "is_promot" : "True",
+      "rate" : "6.5",
+      "category" : "Japa",
+      "city": "Ciudad Real",
+      "address": "Plaza Real, 73",
+      "country": "Spain",
+      "capacity": 50
+    }
+  },
+    {
+    "model": "forkilla.Restaurant",
+    "pk": 9,
+    "fields": {
+      "restaurant_number": "15688446",
+      "name": "Pans",
+      "menu_description" :"Bocatas",
+      "price_average" : "8.5",
+      "is_promot" : "False",
+      "rate" : "4.5",
+      "category" : "Medi",
+      "city": "Sevilla",
+      "address": "Calle Real, 3",
+      "country": "Spain",
+      "capacity": 150
+    }
+  },
+    {
+    "model": "forkilla.Restaurant",
+    "pk": 10,
+    "fields": {
+      "restaurant_number": "15611446",
+      "name": "HBurguer",
+      "menu_description" :"Hamburgueses",
+      "price_average" : "18.5",
+      "is_promot" : "True",
+      "rate" : "9.5",
+      "category" : "Medi",
+      "city": "Badajoz",
+      "address": "Calle Principe, 13",
+      "country": "Spain",
+      "capacity": 25
+    }
+  },
+   {
+    "model": "forkilla.Restaurant",
+    "pk": 11,
+    "fields": {
+      "restaurant_number": "15611336",
+      "name": "HotDogsNew",
+      "menu_description" :"Hot Dogs",
+      "price_average" : "5.5",
+      "is_promot" : "True",
+      "rate" : "5.5",
+      "category" : "BBQ",
+      "city": "Bilbao",
+      "address": "Calle Arratebenea, 13",
+      "country": "Spain",
+      "capacity": 80
+    }
+  }, 
+   {
+    "model": "forkilla.Restaurant",
+    "pk": 12,
+    "fields": {
+      "restaurant_number": "15611436",
+      "name": "AlohaVegan",
+      "menu_description" :"Vegetaria",
+      "price_average" : "20",
+      "is_promot" : "True",
+      "rate" : "8.5",
+      "category" : "Medi",
+      "city": "Barcelona",
+      "address": "Calle Corts Catalanes, 13",
+      "country": "Spain",
+      "capacity": 45
+    }
+  }
+
+]

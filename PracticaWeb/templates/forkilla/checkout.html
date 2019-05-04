@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul class="breadcrumb">
+        <li><a href="http://localhost:8000/forkilla/restaurants/">Home</a></li>
+    </ul>
+    {% if resultat %}
+        <h3>RESERVA REALITZADA AMB ÈXIT </h3>
+    {% else %}
+        <h3>ERROR EN LA RESERVA</h3>
+    {% endif %}
+</body>
+</html>

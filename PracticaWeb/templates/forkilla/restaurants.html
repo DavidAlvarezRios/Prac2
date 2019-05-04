@@ -1,0 +1,44 @@
+{% extends 'forkilla/base.html' %}
+{% block content %}
+    <head>
+
+        <title>Home</title>
+
+
+    </head>
+
+
+    <body>
+
+        {% if city and category %}
+
+            <ul class="breadcrumb">
+                <li><a href="http://localhost:8000/forkilla/restaurants/">Home</a></li>
+                <li><a href="http://localhost:8000/forkilla/restaurants/{{ city }}">{{ city }}</a></li>
+                <li>{{ category }}</li>
+            </ul>
+        {% elif city %}
+            <ul class="breadcrumb">
+                <li><a href="http://localhost:8000/forkilla/restaurants/">Home</a></li>
+                <li>{{ city }}</li>
+            </ul>
+        {% endif %}
+
+        {% if restaurants %}
+            {% if promoted %}
+                <h2>Promoted Restaurants</h2>
+            {% endif %}
+             <form action="{% url 'reservation'%}" method="get">
+                 {% for restaurant in restaurants %}
+                    <a href="{% url 'details' restaurant.restaurant_number%}"> {{restaurant.name}} </a> : {{restaurant.menu_description}}
+                    <button type="submit" name="reservation" value={{restaurant.restaurant_number}}> Reserva</button>
+                    <br>
+                {% endfor %}
+            </form>
+
+        {% else %}
+            <p>No restaurants are available.</p>
+        {% endif %}
+
+    </body>
+{% endblock %}

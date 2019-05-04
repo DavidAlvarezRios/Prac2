@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'forkilla/base.html' %}
+{% block content%}
+    <head>
+        <meta charset="UTF-8">
+        {% if restaurant %}
+            <title>{{restaurant.name}}</title>
+        {% else %}
+            <title>Not found</title>
+        {% endif %}
+    </head>
+    <body>
+
+        {% if restaurant %}
+            <ul class="breadcrumb">
+                <li><a href="http://localhost:8000/forkilla/restaurants/">Home</a></li>
+                <li><a href="http://localhost:8000/forkilla/restaurants/{{ restaurant.city }}">{{ restaurant.city }}</a></li>
+                <li><a href="http://localhost:8000/forkilla/restaurants/{{ restaurant.city }}/{{ restaurant.category }}">{{ restaurant.category }}</a></li>
+                <li>{{ restaurant.name }}</li>
+            </ul>
+            <h3>Name:</h3>  {{ restaurant.name }}
+            <h3>Restaurant number:</h3> {{restaurant.restaurant_number}}
+            <h3>Menu description:</h3> {{restaurant.menu_description}}
+            <h3>Price average</h3> {{restaurant.price_average}}
+            <h3>City</h3> {{restaurant.city}}
+            <h3>Address</h3> {{restaurant.address}}
+            <h3>Country</h3> {{restaurant.country}}
+        {% endif %}
+    <br>
+
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="review_message" rows="10" cols="30">Expressi aqui les seves opinions.</textarea>
+        <br>
+      	    <p>Entri la puntuacio del restaurant</p>
+            <select name="stars">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        <br><br>
+        <input type="submit">
+    </form>
+
+    {% if comments %}
+        <h3>Reviews del restaurant {{ restaurant.name }}</h3>
+        {% for comment in comments %}
+            <p>Usuari: </p>{{ comment.user }} <br>
+            {{ comment.review_message }}
+            <br>
+        {% endfor %}
+    {% else %}
+        <h3>No hi ha reviews disponibles pel restaurant {{ restaurant.name }}</h3>
+    {% endif %}
+
+    </body>
+{% endblock %}
+</html>
