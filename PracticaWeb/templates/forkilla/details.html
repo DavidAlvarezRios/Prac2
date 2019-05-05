@@ -28,7 +28,7 @@
             <h3>Country</h3> {{restaurant.country}}
         {% endif %}
     <br>
-
+    {% if user.is_authenticated %}
     <form method="post">
         {% csrf_token %}
         <textarea name="review_message" rows="10" cols="30">Expressi aqui les seves opinions.</textarea>
@@ -45,11 +45,12 @@
         <br><br>
         <input type="submit">
     </form>
+    {% endif %}
 
     {% if comments %}
         <h3>Reviews del restaurant {{ restaurant.name }}</h3>
         {% for comment in comments %}
-            <p>Usuari: </p>{{ comment.user }} <br>
+            <p>Usuari: </p>{{ comment.user.username }} <br>
             {{ comment.review_message }}
             <br>
         {% endfor %}

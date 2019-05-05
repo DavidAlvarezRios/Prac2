@@ -5,6 +5,22 @@
     <title>Title</title>
 </head>
 <body>
+
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="get">
+            <button>Logout</button>
+        </form>
+
+    {% else %}
+        <form action="{% url 'login' %}" method="get">
+            <button>Login</button>
+        </form>
+
+        <form action="{% url 'register' %}" method="get">
+            <button>Register</button>
+        </form>
+    {% endif %}
+
     <h3>I AM THE COMMON PART</h3>
 
     Your last viewed Restaurants

@@ -1,29 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render
-
+from django.http import HttpResponse
 # Create your views here.
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse
 
-from .models import Restaurant, ViewedRestaurants, Review
-
-from django import forms
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Restaurant
 from .forms import ReservationForm, ReviewForm
 from .models import Reservation
+from .models import Restaurant
+from .models import ViewedRestaurants, Review
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the forkilla home.")
 
-@login_required
+
 def restaurants(request, city="", category=""):
     promoted = False
 
@@ -42,13 +38,13 @@ def restaurants(request, city="", category=""):
         'city': city,
         'category': category,
         'restaurants': restaurants_by_city,
-        'promoted': promoted
+        'promoted': promoted,
+        'user': request.user
     }
     return render(request, 'forkilla/restaurants.html', context)
 
 
 def details_view(request, restaurant_number=""):
-
     try:
         commented = False
         if request.method == "POST":
@@ -60,7 +56,7 @@ def details_view(request, restaurant_number=""):
                 stars = form['stars']
 
                 rev = Review(review_message=comment.data, stars=stars.data, user="Anonymous",
-                                restaurant=Restaurant.objects.get(restaurant_number=restaurant_number))
+                             restaurant=Restaurant.objects.get(restaurant_number=restaurant_number))
                 rev.save()
                 commented = True
             else:
@@ -69,7 +65,7 @@ def details_view(request, restaurant_number=""):
         viewedrestaurants = _check_session(request)
         restaurant = Restaurant.objects.get(restaurant_number=restaurant_number)
         viewedrestaurants.restaurant.add(restaurant)
-        comments = Review.objects.all().order_by("id").reverse()\
+        comments = Review.objects.all().order_by("id").reverse() \
             .filter(restaurant=Restaurant.objects.get(restaurant_number=restaurant_number))
 
         context = {
@@ -77,6 +73,7 @@ def details_view(request, restaurant_number=""):
             'commented': commented,
             'comments': comments,
             'viewedrestaurants': viewedrestaurants,
+            'user': request.user
         }
     except Restaurant.DoesNotExist:
         return HttpResponse("Hi ha hagut un error")
@@ -93,6 +90,7 @@ def checkout(request):
     return render(request, 'forkilla/checkout.html', context)
 
 
+@login_required
 def reservation(request):
     try:
         if request.method == "POST":
@@ -101,16 +99,18 @@ def reservation(request):
                 resv = form.save(commit=False)
                 restaurant_number = request.session["reserved_restaurant"]
                 resv.restaurant = Restaurant.objects.get(restaurant_number=restaurant_number)
-                #We need to add up the number of people who makes reservation plus the people who
-                #has already reserved.
+                resv.user = request.user
+                # We need to add up the number of people who makes reservation plus the people who
+                # has already reserved.
                 total_people = 0
                 reservations = Reservation.objects.filter(restaurant=resv.restaurant).filter(time_slot=resv.time_slot)
 
                 for r in reservations:
                     total_people += r.num_people
 
-                if (total_people + resv.num_people) <= resv.restaurant.capacity: #We compare it with the total capacity of the restaurant
-                    #If there is space we update the values
+                if (
+                        total_people + resv.num_people) <= resv.restaurant.capacity:  # We compare it with the total capacity of the restaurant
+                    # If there is space we update the values
                     resv.save()
                     request.session["reservation"] = resv.id
                     request.session["result"] = "OK"
@@ -131,7 +131,8 @@ def reservation(request):
             context = {
                 'restaurant': restaurant,
                 'viewedrestaurants': viewedrestaurants,
-                'form': form
+                'form': form,
+                'logged': request.user.is_authenticated()
             }
     except Restaurant.DoesNotExist:
         return HttpResponse("Restaurant Does not exists")
@@ -157,7 +158,6 @@ def _check_session_review(request):
         review = Review.objects.get(id=request.session["reviewedrestaurant"])
     return review
 
-
 def review(request):
     try:
         if request.method == "POST":
@@ -166,6 +166,7 @@ def review(request):
                 review = form.save(commit=False)
                 restaurant_number = request.session["reviewedrestaurant"]
                 review.restaurant = Restaurant.objects.get(restaurant_number__iexact=restaurant_number)
+                review.user = request.user
                 review.save()
                 review.session["review"] = review.id
                 review.session["review_message"] = review.review_message
@@ -185,12 +186,14 @@ def review(request):
             context = {
                 'restaurant': restaurant,
                 'viewedrestaurants': reviewedrestaurants,
-                'form': form
+                'form': form,
+                'user': request.user
             }
 
     except Restaurant.DoesNotExist:
         return HttpResponse("Restaurant Does not exist")
     return render(request, 'forkilla/review.html', context)
+
 
 def register(request):
     if request.method == 'POST':
@@ -203,3 +206,16 @@ def register(request):
     return render(request, "registration/register.html", {
         'form': form,
     })
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(username=username, password=password)
+
+        if user is None:
+            if user.is_active:
+                login(request, user)
+
+    return ""

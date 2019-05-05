@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from datetime import datetime
+
+from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
@@ -40,7 +42,7 @@ class Restaurant(models.Model):
     address = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
-    featured_photo = models.ImageField()
+    featured_photo = models.ImageField(upload_to="restaurant_imgs")
     category = models.CharField(max_length=5, choices=CATEGORIES)
     capacity = models.PositiveIntegerField()
 
@@ -66,6 +68,7 @@ class Reservation(models.Model):
     )
     _d_slots = dict(SLOTS)
     id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User)
     restaurant = models.ForeignKey(Restaurant)
     day = models.DateField(default=datetime.now)
     time_slot = models.CharField(max_length=15, choices=SLOTS)
@@ -83,6 +86,7 @@ class Review(models.Model):
 
     id = models.AutoField(primary_key=True)
     restaurant = models.ForeignKey(Restaurant)
+    user = models.ForeignKey(User)
     review_message = models.CharField(max_length=500)
     # stars = IntegerRangeField(min_value=0, max_value=5)
     #stars = models.PositiveIntegerField(default=1, validators=[MinValueValidator(0), MaxValueValidator(5)])
