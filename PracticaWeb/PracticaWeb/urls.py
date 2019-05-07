@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('forkilla.urls')),
     url(r'^accounts/login/$', login, name='login'),
-    url(r'^accounts/logout/$', logout, {'next_page': '/'}, name='logout')
+    url(r'^accounts/logout/$', logout, {'next_page': '/restaurants/'}, name='logout')
 ]
 

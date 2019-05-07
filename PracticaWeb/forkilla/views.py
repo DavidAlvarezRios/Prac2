@@ -158,6 +158,7 @@ def _check_session_review(request):
         review = Review.objects.get(id=request.session["reviewedrestaurant"])
     return review
 
+
 def review(request):
     try:
         if request.method == "POST":
@@ -181,7 +182,6 @@ def review(request):
             restaurant_number = request.GET["review"]
             restaurant = Restaurant.objects.get(restaurant_number=restaurant_number)
             request.session["reviewedrestaurant"] = restaurant_number
-
             form = ReviewForm()
             context = {
                 'restaurant': restaurant,
@@ -195,6 +195,22 @@ def review(request):
     return render(request, 'forkilla/review.html', context)
 
 
+@login_required
+def reservationlist(request, username=""):
+
+    if request.method == "GET":
+        if request.user.is_authenticated():
+            reserved_restaurants = Reservation.objects.filter(user=request.user).order_by('-day')
+        else:
+            reserved_restaurants = None
+
+        context = {'reserved_restaurants': reserved_restaurants,
+                   'user': request.user,
+                   'username': username
+                   }
+    return render(request, "forkilla/reservationlist.html", context)
+
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -206,6 +222,7 @@ def register(request):
     return render(request, "registration/register.html", {
         'form': form,
     })
+
 
 def login_user(request):
     if request.method == 'POST':

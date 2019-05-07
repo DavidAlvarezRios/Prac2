@@ -89,7 +89,7 @@ class Review(models.Model):
     user = models.ForeignKey(User)
     review_message = models.CharField(max_length=500)
     # stars = IntegerRangeField(min_value=0, max_value=5)
-    #stars = models.PositiveIntegerField(default=1, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    # stars = models.PositiveIntegerField(default=1, validators=[MinValueValidator(0), MaxValueValidator(5)])
     stars = models.IntegerField()
     user = models.CharField(max_length=100, default="Anonymous")
 

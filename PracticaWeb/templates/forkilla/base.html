@@ -10,7 +10,9 @@
         <form action="{% url 'logout' %}" method="get">
             <button>Logout</button>
         </form>
-
+        <form action="{% url 'reservationlist' user.username %}" method="get">
+            <button type="submit" name="reservationlist" value={{user.username}}>Reserves</button>
+        </form>
     {% else %}
         <form action="{% url 'login' %}" method="get">
             <button>Login</button>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserves.</title>
+</head>
+<body>
+
+    {% if reserved_restaurants %}
+
+        {% for reservation in reserved_restaurants %}
+            <h3>reservation.restaurant.name</h3><p>: reservation.day</p><br>
+            <form action="{% url 'details' %}" method="get">
+                <button>Review</button>
+            </form>
+        {% endfor %}
+
+    {% endif %}
+
+</body>
+</html>

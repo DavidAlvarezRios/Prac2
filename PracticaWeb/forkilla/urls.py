@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^restaurant/checkout', views.checkout, name='checkout'),
     url(r'^restaurant/(?P<restaurant_number>.*)/', views.details_view, name='details'),
     url(r'^restaurants/(?P<city>.*)/(?P<category>.*)$', views.restaurants, name='filterestaurants'),
-    url(r'^register/$', views.register, name='register')
+    url(r'^register/$', views.register, name='register'),
+    url(r'^reservationlist/(?P<username>.*)/$', views.reservationlist, name='reservationlist')
 ]
