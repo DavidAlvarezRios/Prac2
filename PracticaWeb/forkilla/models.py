@@ -82,11 +82,11 @@ class ViewedRestaurants(models.Model):
     id_vr = models.AutoField(primary_key=True)
     restaurant = models.ManyToManyField(Restaurant)
 
-class Review(models.Model):
 
+class Review(models.Model):
     id = models.AutoField(primary_key=True)
     restaurant = models.ForeignKey(Restaurant)
-    user = models.ForeignKey(User)
+    #user = models.ForeignKey(User)
     review_message = models.CharField(max_length=500)
     # stars = IntegerRangeField(min_value=0, max_value=5)
     # stars = models.PositiveIntegerField(default=1, validators=[MinValueValidator(0), MaxValueValidator(5)])

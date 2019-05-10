@@ -26,6 +26,7 @@
             <h3>City</h3> {{restaurant.city}}
             <h3>Address</h3> {{restaurant.address}}
             <h3>Country</h3> {{restaurant.country}}
+            <h3>Score</h3> {{ restaurant.rate }}
         {% endif %}
     <br>
     {% if user.is_authenticated %}
@@ -50,9 +51,10 @@
     {% if comments %}
         <h3>Reviews del restaurant {{ restaurant.name }}</h3>
         {% for comment in comments %}
-            <p>Usuari: </p>{{ comment.user.username }} <br>
+            <p>Usuari: {{ comment.user }} </p>
+            <p>Puntuacio: {{ comment.stars }}</p>
             {{ comment.review_message }}
-            <br>
+            <br><br>
         {% endfor %}
     {% else %}
         <h3>No hi ha reviews disponibles pel restaurant {{ restaurant.name }}</h3>

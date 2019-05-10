@@ -4,16 +4,20 @@ from __future__ import unicode_literals
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 # Create your views here.
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.views.generic import DeleteView
 
 from .forms import ReservationForm, ReviewForm
 from .models import Reservation
 from .models import Restaurant
 from .models import ViewedRestaurants, Review
+
+from datetime import date
 
 
 def index(request):
@@ -34,12 +38,16 @@ def restaurants(request, city="", category=""):
         promoted = True
     if request.GET:
         restaurants_by_city = Restaurant.objects.filter(city__iexact=request.GET['searching'])
+
+    viewedrestaurants = _check_session(request)
+
     context = {
         'city': city,
         'category': category,
         'restaurants': restaurants_by_city,
         'promoted': promoted,
-        'user': request.user
+        'user': request.user,
+        'viewedrestaurants': viewedrestaurants
     }
     return render(request, 'forkilla/restaurants.html', context)
 
@@ -55,8 +63,9 @@ def details_view(request, restaurant_number=""):
                 comment = form['review_message']
                 stars = form['stars']
 
-                rev = Review(review_message=comment.data, stars=stars.data, user="Anonymous",
+                rev = Review(review_message=comment.data, stars=stars.data, user=request.user.get_username(),
                              restaurant=Restaurant.objects.get(restaurant_number=restaurant_number))
+                rev.user = request.user.get_username()
                 rev.save()
                 commented = True
             else:
@@ -197,14 +206,20 @@ def review(request):
 
 @login_required
 def reservationlist(request, username=""):
-
     if request.method == "GET":
-        if request.user.is_authenticated():
-            reserved_restaurants = Reservation.objects.filter(user=request.user).order_by('-day')
-        else:
-            reserved_restaurants = None
+        reserved_restaurants = Reservation.objects.filter(user=request.user).order_by('-day')
+        past_date = []
+        future_date = []
+
+        for reserv in reserved_restaurants:
+            if reserv.day < date.today():
+                past_date.append(reserv)
+            else:
+                future_date.append(reserv)
 
         context = {'reserved_restaurants': reserved_restaurants,
+                   'past': past_date,
+                   'future': future_date,
                    'user': request.user,
                    'username': username
                    }
@@ -236,3 +251,28 @@ def login_user(request):
                 login(request, user)
 
     return ""
+
+
+class DeleteView(SuccessMessageMixin, DeleteView):
+    model = Reservation
+    success_message = "deleted..."
+
+    def get_success_url(self):
+        username = self.object.user.get_username()
+        return reverse_lazy('reservationlist', kwargs={'username': username})
+
+
+def delete(self, request, *args, **kwargs):
+    self.object = self.get_object()
+    name = self.object.id
+    request.session['name'] = str(name)  # name will be change according to your need
+    message = request.session['name'] + ' deleted successfully'
+    message.success(self.request, message)
+    return super(DeleteView, self).delete(request, *args, **kwargs)
+
+
+def been_reviewed(restaurant):
+    reviewed_restaurants = Review.objects.all().filter(restaurant=Restaurant.objects.get(restaurant_number=restaurant.restaurant_number), user=request.user)
+
+    return reviewed_restaurants
+
