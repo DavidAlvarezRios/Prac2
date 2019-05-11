@@ -4,16 +4,7 @@
     <list default="true" id="b785ec43-cc4f-415f-bc1d-092aabd0ebf9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forkilla/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/forkilla/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forkilla/migrations/0002_reservation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forkilla/migrations/0003_viewedrestaurants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forkilla/migrations/0004_auto_20190424_1822.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forkilla/migrations/0005_auto_20190428_2136.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forkilla/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/forkilla/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forkilla/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/forkilla/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forkilla/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/forkilla/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/forkilla/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/forkilla/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/forkilla/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/forkilla/details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/forkilla/reservationlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/forkilla/reservationlist.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forkilla/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="272" selection-start-line="272" selection-end-line="272" />
+            <state relative-caret-position="2970">
+              <caret line="216" column="85" selection-start-line="216" selection-start-column="85" selection-end-line="216" selection-end-column="85" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -42,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/forkilla/reservationlist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="93" lean-forward="true" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
+            <state relative-caret-position="645">
+              <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -52,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/forkilla/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
+              <caret column="23" selection-start-column="23" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -69,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forkilla/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
+            <state relative-caret-position="1335">
+              <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -93,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/templates/forkilla/details.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="83" />
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -165,6 +156,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,7 +195,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -268,12 +259,14 @@
       <workItem from="1557336372757" duration="7111000" />
       <workItem from="1557482248567" duration="599000" />
       <workItem from="1557498123277" duration="2763000" />
-      <workItem from="1557517072632" duration="10532000" />
+      <workItem from="1557517072632" duration="10616000" />
+      <workItem from="1557567980527" duration="2040000" />
+      <workItem from="1557583944681" duration="585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45648000" />
+    <option name="totallyTimeSpent" value="48357000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -285,15 +278,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="247" y="87" width="2087" height="1189" extended-state="0" />
+    <frame x="247" y="87" width="2087" height="1189" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17687409" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18079373" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27160493" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27160493" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -399,10 +392,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Restaurant.json">
+    <entry file="file://$PROJECT_DIR$/forkilla/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+        <state relative-caret-position="2970">
+          <caret line="216" column="85" selection-start-line="216" selection-start-column="85" selection-end-line="216" selection-end-column="85" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forkilla/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/forkilla/restaurants.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="40" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forkilla/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -415,20 +435,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forkilla/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/forkilla/details.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="83" />
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Restaurant.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -443,34 +460,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forkilla/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/forkilla/restaurants.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="40" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forkilla/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="272" selection-start-line="272" selection-end-line="272" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/forkilla/reservationlist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="93" lean-forward="true" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
+        <state relative-caret-position="645">
+          <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
         </state>
       </provider>
     </entry>

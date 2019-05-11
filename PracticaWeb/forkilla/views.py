@@ -209,11 +209,14 @@ def reservationlist(request, username=""):
     if request.method == "GET":
         reserved_restaurants = Reservation.objects.filter(user=request.user).order_by('-day')
         past_date = []
+        reviewed = []
         future_date = []
 
         for reserv in reserved_restaurants:
             if reserv.day < date.today():
-                past_date.append(reserv)
+                past_date.append((reserv, been_reviewed(request, reserv.restaurant)))
+                # reviewed.append(been_reviewed(request, reserv.restaurant))
+
             else:
                 future_date.append(reserv)
 
@@ -271,8 +274,10 @@ def delete(self, request, *args, **kwargs):
     return super(DeleteView, self).delete(request, *args, **kwargs)
 
 
-def been_reviewed(restaurant):
+def been_reviewed(request, restaurant):
     reviewed_restaurants = Review.objects.all().filter(restaurant=Restaurant.objects.get(restaurant_number=restaurant.restaurant_number), user=request.user)
 
-    return reviewed_restaurants
+    if reviewed_restaurants:
+        return True
+    return False
 

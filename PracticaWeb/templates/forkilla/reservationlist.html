@@ -22,11 +22,18 @@
             {% endif %}
 
             {% if past %}
-                {% for reservation in past %}
+                {% for reservation, reviewed in past %}
                     <h3>{{ reservation.restaurant.name }}</h3><p>: {{ reservation.day }} </p>
-                    <form action="{% url 'details' reservation.restaurant.restaurant_number %}", method="get">
-                        <button>Review</button>
-                    </form>
+                    {% if reviewed %}
+                        <form action="{% url 'delete_view' pk=reservation.id %}" method="POST">
+                          {% csrf_token %}
+                          <button type="submit" value="Delete">Delete</button>
+                      </form>
+                    {% else %}
+                        <form action="{% url 'details' reservation.restaurant.restaurant_number %}", method="get">
+                            <button>Review</button>
+                        </form>
+                    {% endif %}
                     <br>
                 {% endfor %}
             {% endif %}
